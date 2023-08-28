@@ -200,7 +200,6 @@ article#services h1{
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
-    left: 50%;
     position: relative;
   }
 
@@ -327,6 +326,9 @@ article#services h1{
   border-radius: 12px;
 }
 
-
+.vertical-center {
+  display: flex;
+  justify-content: center;
+}
 
 
