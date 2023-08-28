@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .splash-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .splash-text {
+            font-size: 36px;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+       /* Add a fade-out animation */
+       @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-container">
+        <div class="splash-text" id="text-container">
+            <!-- Initially, this will be empty -->
+        </div>
+    </div>
+
+    <script>
+        // Add JavaScript to display text messages one by one
+        const textContainer = document.getElementById("text-container");
+        const textMessages = ["Welcome to My Website!", "Discover Amazing Content!","Use Desktop for Best Experience"];
+        let currentMessageIndex = 0;
+
+        function displayNextMessage() {
+            if (currentMessageIndex < textMessages.length) {
+                textContainer.textContent = textMessages[currentMessageIndex];
+                currentMessageIndex++;
+
+                setTimeout(() =>{
+                    textContainer.style.opacity = 50;
+                }, 2000);
+            } else {
+                // After displaying all messages, fade out the entire splash container
+                const splashContainer = document.querySelector(".splash-container");
+                splashContainer.style.animation = "fadeOut 1s ease-in-out";
+                setTimeout(() => {
+                    // Redirect to another page after fading out
+                    window.location.href = "homepage.html";
+                }, 1000); // Adjust the timing to match the fade-out animation duration
+            }
+        }
+        
+
+        // Display the first message immediately
+        displayNextMessage();
+
+        // Set a timer to display the next message every 3 seconds
+        setInterval(displayNextMessage, 2000); // Change the duration as needed
+    </script>
+</body>
+</html>
